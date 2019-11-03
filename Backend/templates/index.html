@@ -7,6 +7,8 @@
             <input type=file name=file></br>
             <input type=submit value=Upload>
         </form>
-        {{marker_color}}
+        {% for color in marker_list %}
+            {{color}}
+        {% endfor %}
     </body>
 </html>

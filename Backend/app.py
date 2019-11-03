@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
-
+marker_list = []
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     marker_color = ''
@@ -34,12 +34,12 @@ def upload_file():
             try:
                 score = float(parsed_json["images"][0]["classifiers"][0]["classes"][0]["score"])
                 print("We believe this area is flooded!")
-                marker_color = 'red'
+                marker_list.append('red')
             except:
                 print("This area is not flooded")
                 score = 0.0
-                marker_color = 'green'
-    return render_template('index.html', marker_color = marker_color)
+                marker_list.append('green')
+    return render_template('index.html', marker_list = marker_list)
 
 # PARAM: filename
 # RETURNS: return true if filename has a file extension and extension is in ALLOWED_EXTENSIONS
