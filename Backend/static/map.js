@@ -46,32 +46,31 @@ map.on('mousemove', e => {
 
 // Adds marker to click
 map.on('click', () => {
-  // try {
-  // new mapboxgl.Marker(el).setLngLat(latlng).addTo(map);
-  geojson = JSON.parse(sessionStorage.getItem('geo'));
-  geojson.features.push({
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: latlng
-    },
-    properties: {
-      title: 'Marker',
-      description: `${latlng}`
-    }
-  });
-  console.log(latlng);
+  try {
+    geojson = JSON.parse(sessionStorage.getItem('geo'));
+    geojson.features.push({
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: latlng
+      },
+      properties: {
+        title: 'Marker',
+        description: `${latlng}`
+      }
+    });
+    console.log(latlng);
 
-  render();
+    render();
 
-  sessionStorage.setItem('geo', JSON.stringify(geojson));
-  // } catch {
-  //   console.log('Pin failed');
-  // }
+    sessionStorage.setItem('geo', JSON.stringify(geojson));
+  } catch {
+    console.log('Pin failed');
+  }
 });
 
 const render = () => {
-  console.log(geojson);
+  // console.log(geojson);
   geojson.features.forEach(marker => {
     let el = document.createElement('div');
     el.className = 'marker';
