@@ -46,32 +46,41 @@ map.on('mousemove', e => {
 
 // Adds marker to click
 map.on('click', () => {
-  try {
-    // new mapboxgl.Marker(el).setLngLat(latlng).addTo(map);
-    geojson.features.push({
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: latlng
-      },
-      properties: {
-        title: 'Marker',
-        description: `${latlng}`
-      }
-    });
-    console.log(latlng);
+  // try {
+  // new mapboxgl.Marker(el).setLngLat(latlng).addTo(map);
+  geojson = JSON.parse(sessionStorage.getItem('geo'));
+  geojson.features.push({
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: latlng
+    },
+    properties: {
+      title: 'Marker',
+      description: `${latlng}`
+    }
+  });
+  console.log(latlng);
 
-    render();
-  } catch {
-    console.log('Pin failed');
-  }
+  render();
+
+  sessionStorage.setItem('geo', JSON.stringify(geojson));
+  // } catch {
+  //   console.log('Pin failed');
+  // }
 });
 
 const render = () => {
+  console.log(geojson);
   geojson.features.forEach(marker => {
     let el = document.createElement('div');
     el.className = 'marker';
-
     new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map);
   });
 };
+
+map.on('load', () => {
+  sessionStorage.getItem('geo', JSON.stringify(geojson));
+  geojson = JSON.parse(sessionStorage.getItem('geo'));
+  render();
+});
