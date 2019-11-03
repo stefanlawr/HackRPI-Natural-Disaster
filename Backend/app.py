@@ -9,7 +9,6 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
 CORS(app)
-marker_list = []
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     marker_color = ''
@@ -36,12 +35,12 @@ def upload_file():
             try:
                 score = float(parsed_json["images"][0]["classifiers"][0]["classes"][0]["score"])
                 print("We believe this area is flooded!")
-                marker_list.append('red')
+                marker_color = 'red'
             except:
                 print("This area is not flooded")
                 score = 0.0
-                marker_list.append('green')
-    return render_template('index.html', marker_list = marker_list)
+                marker_color = 'green'
+    return render_template('index.html', marker_color = marker_color)
 
 # PARAM: filename
 # RETURNS: return true if filename has a file extension and extension is in ALLOWED_EXTENSIONS
