@@ -46,20 +46,6 @@ map.on('mousemove', e => {
 
 // Adds marker to click
 map.on('click', () => {
-  let input = document.createElement('input');
-  input.type = 'file';
-
-  input.onchange = e => {
-    let file = e.target.files[0];
-  };
-
-  input.click();
-
-  let xhr = new XMLHttpRequest();
-  xhr.open('POST', '127.0.0.1:5000', true);
-  xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-  xhr.send(file);
-
   try {
     // new mapboxgl.Marker(el).setLngLat(latlng).addTo(map);
     geojson.features.push({
