@@ -79,6 +79,9 @@ const render = () => {
 };
 
 map.on('load', () => {
+  if (!sessionStorage.getItem('geo')) {
+    sessionStorage.setItem('geo', JSON.stringify(geojson));
+  }
   sessionStorage.getItem('geo', JSON.stringify(geojson));
   geojson = JSON.parse(sessionStorage.getItem('geo'));
   render();
