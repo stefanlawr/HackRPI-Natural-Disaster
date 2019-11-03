@@ -28,3 +28,29 @@ html {
     text-align: center;
   }
 }
+
+header {
+  display: inline-flex;
+  align-items: center;
+
+  background: maroon;
+
+  border-bottom: 0.2rem solid;
+  border-color: black;
+
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+  width: 100%;
+
+  h1 {
+    font-size: 3rem;
+    padding: 0.2em;
+    margin: 0;
+  }
+
+  nav {
+    margin: auto;
+    right: 0;
+    float: right;
+  }
+}
