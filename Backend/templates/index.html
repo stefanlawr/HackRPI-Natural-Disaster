@@ -24,13 +24,21 @@
         <form method=post enctype=multipart/form-data> <input type=file name=file></br>
           <input type=submit value=Upload>
         </form>
+        <ul style="display: none;">
+                {% for color in marker_list %}
+                    <li id="status">{{color}}</li>
+                {% endfor %}
+        </ul>
       </nav>
     </header>
 
     <div id="map"></div>
     <pre id="info"></pre>
 
-
+    <script>
+      let x = document.querySelectorAll('#status');
+      console.log(x);
+    </script>
     <script src="{{ url_for('static', filename='map.js')}}"></script>
     <script src="{{ url_for('static', filename='marker.js')}}"></script>
   </body>
