@@ -37,7 +37,15 @@
 
     <script>
       let x = document.querySelectorAll('#status');
-      console.log(x);
+      x[x.length-1].textContent === 'red' ? console.log('flooeded') : console.log('safe');
+
+      z = JSON.parse(sessionStorage.getItem('geo'));
+      // console.log(z.features[z.features.length-1]);
+      let y = document.querySelectorAll('div');
+      let s = [].slice.call(y);
+      // s = [].slice.call(s[0]);
+      console.log(s[0].childNodes[1]);
+
     </script>
     <script src="{{ url_for('static', filename='map.js')}}"></script>
     <script src="{{ url_for('static', filename='marker.js')}}"></script>
