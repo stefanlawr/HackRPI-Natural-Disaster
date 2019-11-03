@@ -3,10 +3,12 @@ import os
 from watson_developer_cloud import VisualRecognitionV3
 from flask import Flask, request, render_template, flash, redirect, url_for
 from werkzeug.utils import secure_filename
+from flask_cors import CORS
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
+CORS(app)
 marker_list = []
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
