@@ -17,8 +17,17 @@
   </head>
 
   <body>
+
+    <nav style="background-color: maroon; height: 5rem;">
+      <h3 style="float: left; color: white; display: flex; justify-items: center;">Natural Disaster Relief</h3>
+      <form method=post enctype=multipart/form-data> <input type=file name=file></br>
+        <input type=submit value=Upload>
+      </form>
+    </nav>
+    
     <div id="map"></div>
     <pre id="info"></pre>
+
 
     <script src="{{ url_for('static', filename='map.js')}}"></script>
     <script src="{{ url_for('static', filename='marker.js')}}"></script>
