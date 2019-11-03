@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Test Application</title>
+    </head>
+    <body>
+        <form method=post enctype=multipart/form-data>
+            <input type=file name=file></br>
+            <input type=submit value=Upload>
+        </form>
+        {% for color in marker_list %}
+            {{color}}
+        {% endfor %}
+    </body>
+</html>

@@ -1,14 +1,26 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Test Application</title>
-    </head>
-    <body>
-        <form method=post enctype=multipart/form-data>
-            <input type=file name=file></br>
-            <input type=submit value=Upload>
-        </form>
-        {% for color in marker_list %}
-            {{color}}
-        {% endfor %}
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Display a map</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}" />
+  </head>
+
+  <body>
+    <div id="map"></div>
+    <pre id="info"></pre>
+
+    <script src="{{ url_for('static', filename='map.js')}}"></script>
+    <script src="{{ url_for('static', filename='marker.js')}}"></script>
+  </body>
 </html>
